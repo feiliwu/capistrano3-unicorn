@@ -1,5 +1,6 @@
 namespace :load do
   task :defaults do
+    set :rails_env, fetch(:stage)
     set :unicorn_pid, -> { File.join(current_path, "tmp", "pids", "unicorn.pid") }
     set :unicorn_config_path, -> { File.join(current_path, "config", "unicorn", "#{fetch(:rails_env)}.rb") }
     set :unicorn_restart_sleep_time, 3
